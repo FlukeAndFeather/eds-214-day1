@@ -13,7 +13,7 @@ PRM <- read_csv("data/RioMameyesPuenteRoto.csv")
 
 
 
-View(PRM)
+names(PRM)
 
 
 # Data frame
@@ -58,7 +58,7 @@ Join_table <- data_frame_prm %>%
   
  
 
-Join_date <- Join_table %>% 
+df_date <- Join_table %>% 
   mutate(date = lubridate::ymd(Sample_Date)) %>%
   mutate(year = year(date),
          month = month(date),
