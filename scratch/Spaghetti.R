@@ -68,7 +68,7 @@ df_date <- Join_table %>%
 group_join <- Join_date %>% group_by(year) %>%
   summarise(across(where(is.numeric), mean, na.rm = TRUE))
 
-ggplot(data = group_join) +
+ggplot(data_frame_BQ1 = group_join) +
   geom_line(aes(year, K)) +
   geom_line(aes(year, NH4-N)) +
   geom_line(aes(year, NO3-N)) +
