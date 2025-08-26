@@ -13,7 +13,7 @@ PRM <- read_csv("data/RioMameyesPuenteRoto.csv")
 
 
 
-names(PRM)
+View(PRM)
 
 
 # Data frame
