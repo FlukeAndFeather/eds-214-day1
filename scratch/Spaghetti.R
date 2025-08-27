@@ -78,12 +78,9 @@ Join_date_cha <- as.character(Join_date$month)
 group_join <- Join_date %>% group_by(year) %>%
   summarise(across(where(is.numeric), mean, na.rm = TRUE))
 
-<<<<<<< HEAD
 
 ggplot(data = Join_date) +
-=======
 ggplot(data_frame_BQ1 = group_join) +
->>>>>>> 8a17ff731df995b4f04e1f89bbcd9b1eb330c7fc
   geom_line(aes(year, K)) +
   geom_line(aes(year, NH4-N)) +
   geom_line(aes(year, NO3-N)) +
