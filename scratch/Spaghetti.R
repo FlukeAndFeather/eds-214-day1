@@ -2,6 +2,8 @@ library(tidyverse)
 library(janitor)
 library(readr)
 library(lubridate)
+library(patchwork)
+library(here)
 
 
 
@@ -13,7 +15,7 @@ PRM <- read_csv("data/RioMameyesPuenteRoto.csv")
 
 
 
-View(PRM)
+names(PRM)
 
 
 # Data frame
@@ -43,11 +45,12 @@ group_PRM <- PRM_date %>% group_by(year) %>%
 summarise(across(where(is.numeric), mean, na.rm = TRUE))
 
 
-ggplot(data = group_PRM, aes(year, K)) +
+plot_K <- ggplot (data = group_PRM, aes(year, K)) +
   geom_line() +
   labs(title = "Potassium per year",
        x = "Year",
-       y = "K")
+       y = "K") +
+  
 
 
 
@@ -64,11 +67,19 @@ Join_date <- Join_table %>%
          month = month(date),
          day = day(date)) 
 
+# Trying to convert month and to to character so it doesn't turn into mean values 
+
+Join_date %>% as.character(month, day)
+
+class(Join_date$month)
+
+Join_date_cha <- as.character(Join_date$month)
 
 group_join <- Join_date %>% group_by(year) %>%
   summarise(across(where(is.numeric), mean, na.rm = TRUE))
 
-ggplot(data.frame() = group_join) +
+
+ggplot(data = Join_date) +
   geom_line(aes(year, K)) +
   geom_line(aes(year, NH4-N)) +
   geom_line(aes(year, NO3-N)) +
@@ -79,4 +90,15 @@ ggplot(data.frame() = group_join) +
        y = "K")
 
   names(group_join)
+  
+  
+  ggplot(data = group_join) +
+    geom_line(aes(year, K)) +
+    geom_line(aes(year, K.y)) +
+    geom_line(aes(year, K.x))
+  
+  
+  
+  
+  
   
