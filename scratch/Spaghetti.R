@@ -80,12 +80,7 @@ ggplot(data_frame_BQ1 = group_join) +
 
   names(group_join)
   
-  library(tidyverse)
-  library(janitor)
-  library(readr)
-  library(lubridate)
-  library(patchwork)
-  library(here)
+
   
   
   bq1 <- read_csv(here("data/QuebradaCuenca1-Bisley.csv"), na = "-9999", show_col_types = F) %>% 
