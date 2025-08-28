@@ -2,19 +2,19 @@
 
 ## Automate
 
-### Running the entire analysis requires rendering one Quarto document
+### ***Running the entire analysis requires rendering one Quarto document***
 
-*Meets* - 
+*Not Yet*
 
 ## The analysis runs without errors
 
-*Meets*
+*Meets* - The analysis runs locally in an R script
 
-## The analysis produces the expected output
+## *The analysis produces the expected output*
 
-*Meets*
+*Meets* - The analysis produces a figure
 
-## Data import/cleaning is handled in its own script(s)
+## *Data import/cleaning is handled in its own script(s)*
 
 *Not yet*
 
@@ -22,7 +22,7 @@
 
 ### Raw data is contained in its own folder
 
-*Meets*
+*Meets* I have a "data" folder for the raw data
 
 ### Intermediate outputs are created and saved to a separate folder from raw data
 
@@ -30,30 +30,29 @@
 
 ### At least one piece of functionality has been refactored into a function in its own file
 
-*Meets*
+*Meets* - A function is store in its own folder
 
 ## Document
 
 ### The repo has a README that explains where to find (1) data, (2) analysis script, (3) supporting code, and (4) outputs
 
-*Meets*
+*Meets* - The repo has a README with a section called “Project content,” where it shows what is in each folder
 
-### The README includes a flowchart and text explaining how the analysis works
+### *The README includes a flowchart and text explaining how the analysis works*
 
 *Not yet*
 
-### The code is appropriately commented
+### *The code is appropriately commented*
 
-*Meets*
+*Meets* - The code has comments
 
-### Variable and function names are descriptive and follow a consistent naming convention
+### *Variable and function names are descriptive and follow a consistent naming convention*
 
-*Meets*
+*Meets* - Variable and function names follow lower_snake_case and are descriptive
 
 ## Scale
 
 ### After cloning the repo on Workbench:
-
 
 ### Running the environment initialization script installs all required packages
 
