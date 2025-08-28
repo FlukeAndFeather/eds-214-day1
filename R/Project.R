@@ -11,21 +11,21 @@ source("R/function.R")
 
 # Data frame
 
-bq1 <- read_csv(here("data/QuebradaCuenca1-Bisley.csv")) %>% 
+bq1 <- read_csv(here("data/QuebradaCuenca1-Bisley.csv"), na = "-9999", show_col_types = F) %>% 
   clean_names() %>% 
   mutate(site = "BQ1")
 
-bq2 <- read_csv(here("data/QuebradaCuenca2-Bisley.csv")) %>% 
+bq2 <- read_csv(here("data/QuebradaCuenca2-Bisley.csv"), na = "-9999", show_col_types = F) %>% 
   clean_names() %>% 
   mutate(site = "BQ2")
 
 
-bq3 <- read_csv(here("data/QuebradaCuenca3-Bisley.csv")) %>% 
+bq3 <- read_csv(here("data/QuebradaCuenca3-Bisley.csv"), na = "-9999", show_col_types = F) %>% 
   clean_names() %>% 
   mutate(site = "BQ3")
 
 
-prm <- read_csv(here("data/RioMameyesPuenteRoto.csv")) %>% 
+prm <- read_csv(here("data/RioMameyesPuenteRoto.csv"), na = "-9999", show_col_types = F) %>% 
   clean_names() %>% 
   mutate(site ="PRM")
 
@@ -95,10 +95,10 @@ print(plot_k)
 df_no <- comb_table_subset_date %>%
   group_by(site) %>%
   mutate(conc_no = sapply(sample_date,
-                          moving_average,
-                          dates = sample_date,
-                          conc = no3_n,
-                          win_size_wks = 9))
+                         moving_average,
+                         dates = sample_date,
+                         conc = no3_n,
+                         win_size_wks = 9))
 
 # Plotting the moving average of the nitrate-N concentration
 
@@ -163,10 +163,10 @@ print(plot_ca)
 df_nh4_n <- comb_table_subset_date %>%
   group_by(site) %>%
   mutate(conc_nh4_n = sapply(sample_date,
-                             moving_average,
-                             dates = sample_date,
-                             conc = nh4_n,
-                             win_size_wks = 9))
+                         moving_average,
+                         dates = sample_date,
+                         conc = nh4_n,
+                         win_size_wks = 9))
 
 
 # Plotting the moving average of the potassium concentration
