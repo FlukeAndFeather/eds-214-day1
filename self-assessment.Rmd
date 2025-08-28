@@ -1,0 +1,64 @@
+# Final Project Self Assessment
+
+## Automate
+
+### Running the entire analysis requires rendering one Quarto document
+
+*Meets* - 
+
+## The analysis runs without errors
+
+*Meets*
+
+## The analysis produces the expected output
+
+*Meets*
+
+## Data import/cleaning is handled in its own script(s)
+
+*Not yet*
+
+## Organize
+
+### Raw data is contained in its own folder
+
+*Meets*
+
+### Intermediate outputs are created and saved to a separate folder from raw data
+
+*Not yet*
+
+### At least one piece of functionality has been refactored into a function in its own file
+
+*Meets*
+
+## Document
+
+### The repo has a README that explains where to find (1) data, (2) analysis script, (3) supporting code, and (4) outputs
+
+*Meets*
+
+### The README includes a flowchart and text explaining how the analysis works
+
+*Not yet*
+
+### The code is appropriately commented
+
+*Meets*
+
+### Variable and function names are descriptive and follow a consistent naming convention
+
+*Meets*
+
+## Scale
+
+### After cloning the repo on Workbench:
+
+
+### Running the environment initialization script installs all required packages
+
+*Not yet*
+
+### The analysis script runs without errors
+
+*Not yet*
