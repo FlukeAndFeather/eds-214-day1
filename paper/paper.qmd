@@ -1,3 +1,17 @@
+---
+title: "Project EDS-214"
+author: "Hylaea Miller"
+format: html
+editor: visual
+#| echo: false
+#| warning: false
+---
+
+## Background
+
+### Packages used on the project and function
+
+```{r}
 library(tidyverse)
 library(janitor)
 library(lubridate)
@@ -5,10 +19,23 @@ library(patchwork)
 library(here)
 library(paletteer)
 
-source("R/function.R")
+source(here::here("R/Function.R"))
+```
 
+## Data
 
-# Data frame
+The data are available through the Environmental Data Initiative. You can find them here: https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.4923064.
+
+-   Quebrada one-Bisley (Q1) Chemistry Data
+-   Quebrada two-Bisley (Q2) Chemistry Data
+-   Quebrada three-Bisley (Q3) Chemistry Data
+-   Puente Roto Mameyes (MPR) Chemistry Data
+
+## Methods
+
+### Reading, formatting names and creating columns for each site
+
+```{r}
 
 bq1 <- read_csv(here("data/QuebradaCuenca1-Bisley.csv")) %>% 
   clean_names() %>% 
@@ -27,25 +54,22 @@ bq3 <- read_csv(here("data/QuebradaCuenca3-Bisley.csv")) %>%
 prm <- read_csv(here("data/RioMameyesPuenteRoto.csv")) %>% 
   clean_names() %>% 
   mutate(site ="PRM")
+```
 
+### Combining the sites and cleaning the data
 
+```{r}
 
-
-# Combining the sites and cleaning the data
 comb_table <- bind_rows(bq1, bq2, bq3, prm) %>% 
   mutate(sample_date = lubridate::ymd(sample_date)) %>% 
   mutate(year = lubridate::year(sample_date)) %>% 
   select(sample_date, k, no3_n, mg, ca, nh4_n, site, year)  # selecting variables of interest
+```
 
+### Switching class of nutrients to numeric and filtering to years of interest
 
-names(comb_table) # checking the variables names  
+```{r}
 
-
-# Checking class of the variables   
-class(comb_table$no3_n)
-class(comb_table$k)
-
-# Switching class of nutrients to numeric
 comb_table$k <- as.numeric(comb_table$k)
 comb_table$no3_n <- as.numeric(comb_table$no3_n)
 comb_table$mg <- as.numeric(comb_table$mg)
@@ -53,12 +77,15 @@ comb_table$ca <- as.numeric(comb_table$ca)
 comb_table$nh4_n <- as.numeric(comb_table$nh4_n)
 
 
-
-# Filter to years of interest
-
 comb_table_subset_date <- comb_table %>%
   filter(year >= '1988' & year <= '1994')
+```
 
+### Discovering the nine-week moving average of nutrient concentration
+
+#### Applying the function to potassium concentration
+
+```{r}
 # Creating vectors to use in the function
 
 dates <- comb_table_subset_date$sample_date
@@ -76,20 +103,11 @@ df_k <- comb_table_subset_date %>%
                          dates = sample_date,
                          conc = k,
                          win_size_wks = 9))
+```
 
+#### Applying the function to the nitrate-N concentration
 
-# Plotting the moving average of the potassium concentration
-plot_k <- ggplot(df_k, aes(x = sample_date, y = conc_k, color = site)) +
-  geom_line() +
-  scale_y_continuous(limits = c(0.4, 1.6)) +
-  scale_color_paletteer_d("wesanderson::Darjeeling2") +
-  labs(title, x = "Year",
-       y = "K mg l⁻¹") +
-  theme_minimal()
-
-print(plot_k)
-
-
+```{r}
 # Creating vectors to use in the function for the nitrate-N
 
 dates <- comb_table_subset_date$sample_date
@@ -107,20 +125,11 @@ df_no <- comb_table_subset_date %>%
                           dates = sample_date,
                           conc = no3_n,
                           win_size_wks = 9))
+```
 
-# Plotting the moving average of the nitrate-N concentration
+#### Applying the function to the magnesium concentration
 
-plot_no <- ggplot(df_no, aes(x = sample_date, y = conc_no, color = site)) +
-  geom_line() +
-  scale_y_continuous(limits = c(5, 500)) +
-  scale_color_paletteer_d("wesanderson::Darjeeling2") +
-  labs(title, x = "Year",
-       y = "NO₃-N ug l⁻¹") +
-  theme_minimal()
-
-print(plot_no)
-
-
+```{r}
 # Creating vectors to use in the function for the magnesium
 
 dates <- comb_table_subset_date$sample_date
@@ -136,21 +145,13 @@ df_mg <- comb_table_subset_date %>%
   mutate(conc_mg = sapply(sample_date,
                           moving_average,
                           dates = sample_date,
-                          conc_mg = mg,
+                          conc = mg,
                           win_size_wks = 9))
+```
 
-# Plotting the moving average of the magnesium concentration
+#### Applying the function to the calcium concentration
 
-plot_mg <- ggplot(df_mg, aes(x = sample_date, y = conc_mg, color = site)) +
-  geom_line() +
-  scale_y_continuous(limits = c(0, 5)) +
-  scale_color_paletteer_d("wesanderson::Darjeeling2") +
-  labs(title, x = "Year",
-       y = "Mg mg l⁻¹") +
-  theme_minimal()
-
-print(plot_mg)
-
+```{r}
 # Creating vectors to use in the function for the calcium 
 
 dates <- comb_table_subset_date$sample_date
@@ -166,20 +167,12 @@ df_ca <- comb_table_subset_date %>%
                           dates = sample_date,
                           conc = ca,
                           win_size_wks = 9))
+```
 
-# Plotting the moving average of the calcium concentration
+#### Applying the function to the ammonia-N
 
-plot_ca <- ggplot(df_ca, aes(x = sample_date, y = conc_ca, color = site)) +
-  geom_line() +
-  scale_y_continuous(limits = c(0, 10)) +
-  scale_color_paletteer_d("wesanderson::Darjeeling2") +
-  labs(title, x = "Year",
-       y = "Ca mg l⁻¹") +
-  theme_minimal()
-
-print(plot_ca)
-
-# Creating vectors to use in the function for the ammonium-N
+```{r}
+# Creating vectors to use in the function for the ammonia-N
 
 dates <- comb_table_subset_date$sample_date
 
@@ -194,9 +187,75 @@ df_nh4_n <- comb_table_subset_date %>%
                              dates = sample_date,
                              conc = nh4_n,
                              win_size_wks = 9))
+```
+
+## Results
+
+### Plotting the moving average of the potassium concentration
+
+```{r}
+
+plot_k <- ggplot(df_k, aes(x = sample_date, y = conc_k, color = site)) +
+  geom_line() +
+  scale_y_continuous(limits = c(0.4, 1.6)) +
+  scale_color_paletteer_d("wesanderson::Darjeeling2") +
+  labs(title, x = "Year",
+       y = "K mg l⁻¹") +
+  theme_minimal()
+
+print(plot_k)
+```
+
+### Plotting the moving average of the nitrate-N concentration
+
+```{r}
 
 
-# Plotting the moving average of the ammonium-N concentration
+plot_no <- ggplot(df_no, aes(x = sample_date, y = conc_no, color = site)) +
+  geom_line() +
+  scale_y_continuous(limits = c(5, 500)) +
+  scale_color_paletteer_d("wesanderson::Darjeeling2") +
+  labs(title, x = "Year",
+       y = "NO₃-N ug l⁻¹") +
+  theme_minimal()
+
+print(plot_no)
+```
+
+### Plotting the moving average of the magnesium concentration
+
+```{r}
+
+plot_mg <- ggplot(df_mg, aes(x = sample_date, y = conc_mg, color = site)) +
+  geom_line() +
+  scale_y_continuous(limits = c(0, 5)) +
+  scale_color_paletteer_d("wesanderson::Darjeeling2") +
+  labs(title, x = "Year",
+       y = "Mg mg l⁻¹") +
+  theme_minimal()
+
+print(plot_mg)
+```
+
+# Plotting the moving average of the calcium concentration
+
+```{r}
+plot_ca <- ggplot(df_ca, aes(x = sample_date, y = conc_ca, color = site)) +
+  geom_line() +
+  scale_y_continuous(limits = c(0, 10)) +
+  scale_color_paletteer_d("wesanderson::Darjeeling2") +
+  labs(title, x = "Year",
+       y = "Ca mg l⁻¹") +
+  theme_minimal()
+
+print(plot_ca)
+
+```
+
+### Plotting the moving average of the ammonium-N concentration
+
+```{r}
+
 plot_nh4_n <- ggplot(df_nh4_n, aes(x = sample_date, y = conc_nh4_n, color = site)) +
   geom_line() +
   scale_y_continuous(limits = c(0, 80)) +
@@ -206,3 +265,4 @@ plot_nh4_n <- ggplot(df_nh4_n, aes(x = sample_date, y = conc_nh4_n, color = site
   theme_minimal()
 
 print(plot_nh4_n)
+```

@@ -1,7 +1,7 @@
 
 # Function of the moving average
 
-  moving_ave <- function(focal_date, dates, conc, win_size_wks) {
+  moving_average <- function(focal_date, dates, conc, win_size_wks) {
     # Which dates are in the window?
     is_in_window <- (dates > focal_date - (win_size_wks / 2) * 7) &
       (dates < focal_date + (win_size_wks / 2) * 7)

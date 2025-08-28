@@ -172,6 +172,7 @@ df_nh4_n <- comb_table_subset_date %>%
 # Plotting the moving average of the potassium concentration
 plot_nh4_n <- ggplot(df_nh4_n, aes(x = sample_date, y = conc_nh4_n, color = site)) +
   geom_line() +
+  geom_vline(data = sample_date, mapping=aes(xintercept="1989-09-20"), color="black") +
   scale_y_continuous(limits = c(0, 80)) +
   scale_color_paletteer_d("wesanderson::Darjeeling2") +
   labs(title, x = "Year",
@@ -179,3 +180,6 @@ plot_nh4_n <- ggplot(df_nh4_n, aes(x = sample_date, y = conc_nh4_n, color = site
   theme_minimal()
 
 print(plot_nh4_n)
+
+plot_k / plot_no / plot_mg / plot_ca / plot_nh4_n
+
