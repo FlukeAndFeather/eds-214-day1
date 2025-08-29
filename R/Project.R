@@ -17,7 +17,7 @@ library(paletteer)
 
 source("R/function.R")
 
-# Data frame
+# Storing, reading, and cleaning data
 
 bq1 <- read_csv(here("data/QuebradaCuenca1-Bisley.csv")) %>% 
   clean_names()
@@ -201,6 +201,7 @@ plot_nh4_n <- ggplot(df_nh4_n, aes(x = sample_date, y = conc_nh4_n, color = samp
 print(plot_nh4_n)
 
 combined_figure <- plot_k / plot_no / plot_mg / plot_ca / plot_nh4_n
+print(combined_figure)
 
 
 # Saving combined figures

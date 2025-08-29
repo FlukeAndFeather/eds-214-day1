@@ -14,7 +14,3 @@
   }
   
   
-  #Q1: What is the task?  
-    
-  #  - Refactor your code by writing a function to perform a task
-  

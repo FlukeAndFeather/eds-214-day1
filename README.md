@@ -6,7 +6,7 @@ Hylaea Miller
 
 ## 1 - Project goal
 
-Recreate figure 3 - Hurricane effects on stream chemistry, from the article *"Effects of hurricane disturbance on stream water concentrations and fluxes in eight tropical forest watersheds of the Luquillo Experimental Forest"*.
+Recreate figure 3 - Hurricane effects on stream chemistry, from the article *"[Effects of hurricane disturbance on stream water concentrations and fluxes in eight tropical forest watersheds of the Luquillo Experimental Forest, Puerto Rico](https://www.cambridge.org/core/journals/journal-of-tropical-ecology/article/abs/effects-of-hurricane-disturbance-on-stream-water-concentrations-and-fluxes-in-eight-tropical-forest-watersheds-of-the-luquillo-experimental-forest-puerto-rico/2511D4A53DA2C95406014ED75441E77B)"*.
 
 *Figure 3 - Concentrations in Bisley, Puerto Rico streams before and after Hurricane Hugo, 9-wk moving averages. (a) potassium, (b) nitrate-N, (c) magnesium, (d) calcium and (e) ammonium-N. The vertical lines mark the time of hurricane disturbance.*
 
@@ -14,7 +14,7 @@ Recreate figure 3 - Hurricane effects on stream chemistry, from the article *"Ef
 
 ## 2 -Methodology
 
-The data was imported from the Environmental Data Initiative ([(McDowell and International Institute Of Tropical Forestry (IITF) 2024)](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.492306){.uri} and arranged for the creation of the figure 3 of the article. A 9-week moving average was calculated for the concentration of the following nutrients: (a) potassium, (b) nitrate-N, (c) magnesium, (d) calcium, and (e) ammonia-N. The graph was created with ggplot2, and the results were compared with the original figure.
+The data was imported from the Environmental Data Initiative [(McDowell and International Institute Of Tropical Forestry (IITF) 2024)](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.492306){.uri} and arranged for the creation of the figure 3 of the article. A 9-week moving average was calculated for the concentration of the following nutrients: (a) potassium, (b) nitrate-N, (c) magnesium, (d) calcium, and (e) ammonia-N. The graph was created with ggplot2, and the results were compared with the original figure.
 
 ### Workflow
 
@@ -26,15 +26,27 @@ The **Project** directory contains:
 
 -   **R:** R scripts for processing data and performing the analysis and supporting code
 
--   **data**: Raw data
+-   **data:** Raw data
 
--   **docs**: Quarto doc
+-   **docs:** Quarto doc
 
--   **figures**: Plot of the Concentrations in Bisley, Puerto Rico streams before and after Hurricane Hugo
+-   **figures:** Plot of the Concentrations in Bisley, Puerto Rico streams before and after Hurricane Hugo
 
-## 4 - Result
+-   **output:** Stored transform data
 
-![](figures/combined_figure.jpg){width="694"}
+## 4 - How to replicate this analyses
+
+Make sure you have R installed with the following packages:
+
+-   tidyverse
+-   janitor
+-   readr
+-   lubridate
+-   here
+-   patchwork
+-   palette
+
+Fork and clone this GitHub repository, and run the **Project** scrip inside the R folder.
 
 ## Acknowledgements
 
