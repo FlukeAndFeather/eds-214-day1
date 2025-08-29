@@ -63,7 +63,10 @@ prm <- read_csv(here("data/RioMameyesPuenteRoto.csv")) %>%
 comb_table <- bind_rows(bq1, bq2, bq3, prm) %>% 
   mutate(sample_date = lubridate::ymd(sample_date)) %>% 
   mutate(year = lubridate::year(sample_date)) %>% 
-  select(sample_date, k, no3_n, mg, ca, nh4_n, site, year)  # selecting variables of interest
+  select(sample_date, k, no3_n, mg, ca, nh4_n, site, year) # selecting variables of interest
+
+# Saving data frame for intermediate outputs
+saveRDS(comb_table, "comb_table.rds")
 ```
 
 ### Switching class of nutrients to numeric and filtering to years of interest
@@ -103,6 +106,9 @@ df_k <- comb_table_subset_date %>%
                          dates = sample_date,
                          conc = k,
                          win_size_wks = 9))
+
+# Saving potassium data frame for intermediate outputs
+saveRDS(df_k, "df_k.rds")
 ```
 
 #### Applying the function to the nitrate-N concentration
@@ -125,6 +131,9 @@ df_no <- comb_table_subset_date %>%
                           dates = sample_date,
                           conc = no3_n,
                           win_size_wks = 9))
+
+# Saving nitrate_N data frame for intermediate outputs
+saveRDS(df_no, "df_no.rds")
 ```
 
 #### Applying the function to the magnesium concentration
@@ -147,6 +156,9 @@ df_mg <- comb_table_subset_date %>%
                           dates = sample_date,
                           conc = mg,
                           win_size_wks = 9))
+
+# Saving magnesium data frame for intermediate outputs
+saveRDS(df_mg, "df_mg.rds")
 ```
 
 #### Applying the function to the calcium concentration
@@ -167,6 +179,9 @@ df_ca <- comb_table_subset_date %>%
                           dates = sample_date,
                           conc = ca,
                           win_size_wks = 9))
+
+# Saving calcium data frame for intermediate outputs
+saveRDS(df_ca, "df_ca.rds")
 ```
 
 #### Applying the function to the ammonia-N
@@ -187,6 +202,10 @@ df_nh4_n <- comb_table_subset_date %>%
                              dates = sample_date,
                              conc = nh4_n,
                              win_size_wks = 9))
+
+# Saving ammonia-N data frame for intermediate outputs
+saveRDS(df_nh4_n, "df_nh4_n.rds")
+
 ```
 
 ## Results
