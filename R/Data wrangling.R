@@ -176,3 +176,116 @@ df_nh4 <- subset_date%>%
                              conc = nh4_n,
                              win_size_wks = 9))
 saveRDS(df_nh4, "df_nh4.rds")
+
+
+# Plotting the moving average of the potassium concentration
+
+plot_k <- ggplot(df_k, aes(x = sample_date, y = conc_k, color = sample_id)) +
+  geom_line() + 
+  geom_vline(xintercept = as.Date("1989-09-20"), 
+             linetype = "dashed", color="black") +
+  scale_y_continuous(limits = c(0.4, 1.6)) +
+  scale_color_paletteer_d("wesanderson::Darjeeling2") +
+  labs(title, x = NULL,
+       y = "K mg l⁻¹",
+       color = "Site") +
+  theme_minimal() +
+  theme(
+    axis.title = element_text(size = 14),               
+    axis.text  = element_text(size = 12),                  
+    legend.title = element_text(size = 13),               
+    legend.text  = element_text(size = 11)               
+  )
+
+print(plot_k)
+
+saveRDS(plot_k, "plot_k.rds")
+
+# Plotting the moving average of the nitrate-N concentration
+
+plot_no3 <- ggplot(df_no3, aes(x = sample_date, y = conc_no, color = sample_id)) +
+  geom_line() + 
+  geom_vline(xintercept = as.Date("1989-09-20"), 
+             linetype = "dashed", color="black") +
+  scale_y_continuous(limits = c(5, 500)) +
+  scale_color_paletteer_d("wesanderson::Darjeeling2") +
+  labs(title, x = NULL,
+       y = "NO₃-N ug l⁻¹",
+       color = NULL) +
+  theme_minimal() + 
+  theme(legend.position = "none")  +
+  theme(
+    axis.title = element_text(size = 14),                  
+    axis.text  = element_text(size = 12),                  
+  )
+
+
+print(plot_no3)
+
+saveRDS(plot_no3, "plot_no3.rds")
+
+# Plotting the moving average of the magnesium concentration
+
+
+
+print(plot_mg)
+
+saveRDS(plot_mg, "plot_mg.rds")
+
+# Plotting the moving average of the calcium concentration
+
+plot_ca <- ggplot(df_ca, aes(x = sample_date, y = conc_ca, color = sample_id)) +
+  geom_line() + 
+  geom_vline(xintercept = as.Date("1989-09-20"), 
+             linetype = "dashed", color="black") +
+  scale_y_continuous(limits = c(0, 10)) +
+  scale_color_paletteer_d("wesanderson::Darjeeling2") +
+  labs(title, x = NULL,
+       y = "Ca mg l⁻¹") +
+  theme_minimal() + 
+  theme(legend.position = "none")  +
+  theme(
+    axis.title = element_text(size = 14),                  
+    axis.text  = element_text(size = 12),                  
+  )
+
+
+print(plot_ca)
+
+saveRDS(plot_ca, "plot_ca.rds")
+
+# Plotting the moving average of the ammonia concentration
+
+plot_nh4 <- ggplot(df_nh4, aes(x = sample_date, y = conc_nh4_n, color = sample_id)) +
+  geom_line() +
+  geom_vline(xintercept = as.Date("1989-09-20"), 
+             linetype = "dashed", color="black") +
+  scale_y_continuous(limits = c(0, 80)) +
+  scale_color_paletteer_d("wesanderson::Darjeeling2") +
+  labs(title, x = "Year",
+       y = "NH4-N ug l⁻¹") +
+  theme_minimal() + 
+  theme(legend.position = "none") +
+  theme(
+    axis.title = element_text(size = 14),                  
+    axis.text  = element_text(size = 12),                  
+                    )
+
+print(plot_nh4)
+
+saveRDS(plot_nh4, "plot_nh4.rds")
+
+combined_figure <- plot_k / plot_no3 / plot_mg / plot_ca / plot_nh4
+print(combined_figure)
+
+# Saving combined figures
+ggsave(
+  filename = here("figures", "combined_figure.jpg"),
+  plot = combined_figure,
+  width = 10,
+  height = 13,
+  dpi = 300
+)
+
+saveRDS(combined_figure, "combined_figure.rds")
+

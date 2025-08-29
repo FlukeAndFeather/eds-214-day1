@@ -185,7 +185,7 @@ Os seguintes objetos são mascarados por 'package:stats':
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<p>The data are available through the Environmental Data Initiative. You can find them here: https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.4923064.</p>
+<p>The data are available through the Environmental Data Initiative. You can find them here: <a href="https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.4923064">(McDowell and International Institute Of Tropical Forestry (IITF) 2024)</a></p>
 <ul>
 <li>Quebrada one-Bisley (Q1) Chemistry Data</li>
 <li>Quebrada two-Bisley (Q2) Chemistry Data</li>
@@ -482,9 +482,8 @@ date  (1): Sample_Date
 </div>
 </div>
 </section>
-</section>
-<section id="plotting-the-moving-average-of-the-calcium-concentration" class="level1">
-<h1>Plotting the moving average of the calcium concentration</h1>
+<section id="plotting-the-moving-average-of-the-calcium-concentration" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-the-moving-average-of-the-calcium-concentration">Plotting the moving average of the calcium concentration</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>plot_ca <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_ca, <span class="fu">aes</span>(<span class="at">x =</span> sample_date, <span class="at">y =</span> conc_ca, <span class="at">color =</span> site)) <span class="sc">+</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
@@ -507,6 +506,7 @@ date  (1): Sample_Date
 </div>
 </div>
 </div>
+</section>
 <section id="plotting-the-moving-average-of-the-ammonium-n-concentration" class="level3">
 <h3 class="anchored" data-anchor-id="plotting-the-moving-average-of-the-ammonium-n-concentration">Plotting the moving average of the ammonium-N concentration</h3>
 <div class="cell">
