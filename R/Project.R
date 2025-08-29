@@ -203,7 +203,7 @@ print(plot_nh4_n)
 combined_figure <- plot_k / plot_no / plot_mg / plot_ca / plot_nh4_n
 
 
-
+# Saving combined figures
 ggsave(
   filename = here("figures", "combined_figures.jpg"),
   plot = combined_figure,
