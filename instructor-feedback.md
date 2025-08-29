@@ -1,8 +1,10 @@
 # Exceeds spec
 
-## 1 - The analysis produces the expected output
+## 1 - The analysis produces the expected output 
+- My figure can be found in the figures folder, and it looks similar to the article, with some improvements in the colors displayed.
 
-## 2 - The README includes a flowchart and text explaining how the analysis works
+## 2 - The README includes a flowchart and text explaining how the analysis works - 
+My README contains all the required instructions and includes an explanation of how to run the analysis
 
 
 
