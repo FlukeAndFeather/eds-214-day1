@@ -28,21 +28,22 @@ https://github.com/hylaea-miller/eds-214-day1/commit/374eb42461274cf5221039217cf
 
 ## Automate
 
-[NY] **Running the entire analysis requires rendering one Quarto document**
-- Error in `read()` in `paper.qmd`
+[M] **Running the entire analysis requires rendering one Quarto document**
 
-[NY] The analysis runs without errors
+[M] The analysis runs without errors
 
-[NY] **The analysis produces the expected output**
+[M] **The analysis produces the expected output**
+- Figure is reproduced twice, should only be plotted once
 
 [NY] **Data import/cleaning is handled in its own script(s)**
-  - Data visualization/plotting is in the data import/cleaning script
+  - After line 65, code is analysis and should not be included in data import/cleaning script
 
 ## Organize
 
 [M] Raw data is contained in its own folder
 
 [NY] Intermediate outputs are created and saved to a separate folder from raw data
+- Intermediate outputs should be all stored `output` not under `paper` too
 
 [M] **At least one piece of functionality has been refactored into a function in its own file**
 
@@ -62,8 +63,9 @@ https://github.com/hylaea-miller/eds-214-day1/commit/374eb42461274cf5221039217cf
 After cloning the repo on Workbench:
 
 [NY] Running the environment initialization script installs all required packages
+- `install.packages()` should only be in `install_packages.R` script not in scripts under the `R/` folder
 
-[NY] The analysis script runs without errors
+[M] The analysis script runs without errors
 
 ## Collaborate
 
