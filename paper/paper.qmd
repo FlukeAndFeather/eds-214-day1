@@ -24,7 +24,7 @@ source(here::here("R/Function.R"))
 
 ## Data
 
-The data are available through the Environmental Data Initiative. You can find them here: https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.4923064.
+The data are available through the Environmental Data Initiative. You can find them here: [(McDowell and International Institute Of Tropical Forestry (IITF) 2024)](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.4923064)
 
 -   Quebrada one-Bisley (Q1) Chemistry Data
 -   Quebrada two-Bisley (Q2) Chemistry Data
@@ -265,4 +265,10 @@ plot_nh4_n <- ggplot(df_nh4_n, aes(x = sample_date, y = conc_nh4_n, color = site
   theme_minimal()
 
 print(plot_nh4_n)
+```
+
+Plotting them together
+
+```{r}
+plot_k / plot_no / plot_mg / plot_ca / plot_nh4_n
 ```
