@@ -86,10 +86,9 @@ plot_nh4 <- readRDS(here("output", "RDS", "plot_nh4.rds"))
 
 combined_figure <- readRDS(here("output", "RDS", "combined_figure.rds"))
 
-print(combined_figure)
 ```
 
-![](images/combined_figure.jpg)
+![](images/combined_figure.jpg){width="634"}
 
 ## Acknowledgements
 

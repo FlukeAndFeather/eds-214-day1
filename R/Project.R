@@ -1,10 +1,3 @@
-install.packages("tidyverse")
-install.packages("janitor")
-install.packages("readr")
-install.packages("lubridate")
-install.packages("here")
-install.packages("patchwork")
-install.packages("palette")
 
 
 library(tidyverse)
