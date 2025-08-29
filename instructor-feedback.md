@@ -54,7 +54,7 @@ https://github.com/hylaea-miller/eds-214-day1/commit/374eb42461274cf5221039217cf
 
 [M] **The code is appropriately commented**
 
-[NY] **Variable and function names are descriptive and follow a consistent naming convention**
+[M] **Variable and function names are descriptive and follow a consistent naming convention**
 - Inconsitent spacing and case in file-naming convention (e.g., `Function.R` vs. `Data wrangling.R`
 
 ## Scale

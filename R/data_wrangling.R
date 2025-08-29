@@ -198,11 +198,11 @@ plot_k <- ggplot(df_k, aes(x = sample_date, y = conc_k, color = sample_id)) +
   )
 
 
-plot(plot_no3)
+print(plot_k)
 
-ggsave("plot_no3.png", plot_no3)
+ggsave("plot_k.png", plot_k)
 
-saveRDS(df_nh4, "df_nh4.rds")
+saveRDS(plot_k, "plot_k.rds")
 
 # Plotting the moving average of the nitrate-N concentration
 
@@ -227,8 +227,9 @@ plot_no3 <- ggplot(df_no3, aes(x = sample_date, y = conc_no, color = sample_id))
 plot(plot_no3)
 
 ggsave("plot_no3.png", plot_no3)
+saveRDS(plot_no3, "plot_no3.rds")
 
-# Plotting the moving average of the magnesium concentration
+
 
 
 
@@ -254,6 +255,7 @@ plot_ca <- ggplot(df_ca, aes(x = sample_date, y = conc_ca, color = sample_id)) +
 plot(plot_ca)
 
 ggsave("plot_ca.png", plot_ca)
+saveRDS(plot_ca, "plot_ca.rds")
 
 
 # Plotting the moving average of the ammonia concentration
@@ -276,8 +278,10 @@ plot_nh4 <- ggplot(df_nh4, aes(x = sample_date, y = conc_nh4_n, color = sample_i
 plot(plot_nh4)
 
 ggsave("plot_nh4.png", plot_nh4 )
+saveRDS(plot_nh4, "plot_nh4.rds")
 
 
+# Plotting the moving average of the magnesium concentration
 plot_mg <- ggplot(df_mg, aes(x = sample_date, y = conc_mg, color = sample_id)) +
   geom_line() + 
   geom_vline(xintercept = as.Date("1989-09-20"), 
@@ -304,6 +308,8 @@ saveRDS(plot_mg, "plot_mg.rds")
 combined_figure <- plot_k / plot_no3 / plot_mg / plot_ca / plot_nh4
 plot(combined_figure)
 
+
+
 # Saving combined figures
 ggsave(
   filename = here("figures", "combined_figure.jpg"),
@@ -313,5 +319,6 @@ ggsave(
   dpi = 300
 )
 
+saveRDS(combined_figure, "combined_figure.rds")
 
 
