@@ -32,18 +32,21 @@ https://github.com/hylaea-miller/eds-214-day1/commit/374eb42461274cf5221039217cf
 
 [M] The analysis runs without errors
 
-[M] **The analysis produces the expected output**
+[E] **The analysis produces the expected output**
 - Figure is reproduced twice, should only be plotted once
+- Great looking figure! And your analysis is very tidy now. Well done!
 
-[NY] **Data import/cleaning is handled in its own script(s)**
+[M] **Data import/cleaning is handled in its own script(s)**
   - After line 65, code is analysis and should not be included in data import/cleaning script
+  - Everything looks tidy now.
 
 ## Organize
 
 [M] Raw data is contained in its own folder
 
-[NY] Intermediate outputs are created and saved to a separate folder from raw data
+[M] Intermediate outputs are created and saved to a separate folder from raw data
 - Intermediate outputs should be all stored `output` not under `paper` too
+- Looks good now
 
 [M] **At least one piece of functionality has been refactored into a function in its own file**
 
@@ -51,7 +54,9 @@ https://github.com/hylaea-miller/eds-214-day1/commit/374eb42461274cf5221039217cf
 
 [M] The repo has a README that explains where to find (1) data, (2) analysis script, (3) supporting code, and (4) outputs
 
-[M] **The README includes a flowchart and text explaining how the analysis works**
+[E] **The README includes a flowchart and text explaining how the analysis works**
+
+- I really like your flowchart! It's a good visual, easy to read and remember.
 
 [M] **The code is appropriately commented**
 
@@ -62,8 +67,9 @@ https://github.com/hylaea-miller/eds-214-day1/commit/374eb42461274cf5221039217cf
 
 After cloning the repo on Workbench:
 
-[NY] Running the environment initialization script installs all required packages
+[M] Running the environment initialization script installs all required packages
 - `install.packages()` should only be in `install_packages.R` script not in scripts under the `R/` folder
+- Environment initialization is all in the right place now
 
 [M] The analysis script runs without errors
 
